@@ -57,11 +57,13 @@ func (s *Syncthing) Monitor(ctx context.Context, disconnect chan error) {
 				retries = 0
 				continue
 			}
+
 			if retries >= 3 {
 				log.Infof("syncthing not connected, sending disconnect signal: %s", err)
 				disconnect <- errors.ErrLostSyncthing
 				return
 			}
+
 			retries++
 		case <-ctx.Done():
 			return

@@ -64,7 +64,7 @@ func (r *reverse) start() {
 			continue
 		}
 
-		log.Infof("%s -> accepted connection: %v", r.String(), remoteConn)
+		log.Infof("%s -> accepted connection: %v", r.String(), remoteConn.LocalAddr().String)
 		go r.handle(remoteConn)
 
 	}
